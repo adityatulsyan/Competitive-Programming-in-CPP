@@ -1,12 +1,12 @@
 #include<bits/stdc++.h>
 #include<algorithm>
 using namespace std;
+
 int dijkstras(vector<vector<pair<int, int>>> &vec, int v)
 {
     vector<int> dist(v+1, INT_MAX);
     dist[1] = 0;
     vector<int> visited(v+1, 0);
-    //cout << "hello" << endl;
     priority_queue<pair<int, int>> q;
     q.push({0, 1});
     while(!q.empty()){
@@ -25,12 +25,13 @@ int dijkstras(vector<vector<pair<int, int>>> &vec, int v)
     return dist[v];
 }
 int main(){
-    int edges, vertices;
+    int edges, vertices; //Number of edges and vertices
     cin >> vertices >> edges;
     vector<vector<pair<int, int>>> vec(vertices+1);
     int a, b, w;
     for(int i = 0; i < edges; i++){
         cin >> a >> b >> w;
+        //Undirected graph
         vec[a].push_back(make_pair(b, w));
         vec[b].push_back(make_pair(a, w));
     }
